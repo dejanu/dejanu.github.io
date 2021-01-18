@@ -8,7 +8,7 @@ I can live with doubt...
 
 
 
-1. [Privacy Policy](file://prvacy_policy.html)
+1. [Privacy Policy](file://privacy_policy.html)
 
 ---
 
