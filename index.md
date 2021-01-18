@@ -1,16 +1,14 @@
 ## Not all watches are created equal...
 
-![Image Not Found](/media/markdown-guidance/image.png)
+![Image Not Found](/media/markdown-guidance/monkeybanner.png)
 
-### Brands
+### Pages
 
-For collectors, watchmakers, horologists 
+I can live with doubt...
 
 
 
-1. [Oris](https://www.oris.ch/)
-2. [Atlantic](https://www.atlantic-watches.ch/en/)
-3. [Seiko](https://www.seikowatches.com/global-en)
+1. [Privacy Policy](file://prvacy_policy.html)
 
 ---
 
