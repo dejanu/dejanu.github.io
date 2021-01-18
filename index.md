@@ -1,4 +1,4 @@
-## Not all watches are created equal...
+## 2>/dev/null
 
 ![Image Not Found](/media/markdown-guidance/monkeybanner.png)
 
@@ -8,7 +8,7 @@ I can live with doubt...
 
 
 
-1. [Privacy Policy](file://privacy_policy.html)
+1. [Privacy Policy](privacy_policy.html)
 
 ---
 
