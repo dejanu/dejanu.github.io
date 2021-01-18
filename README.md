@@ -1,2 +1,2 @@
 # dejanu.github.io
-Timepiece cheatsheet
+I can live with doubt ...
