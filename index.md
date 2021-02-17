@@ -1,6 +1,6 @@
 ## 2>/dev/null
 
-![Image Not Found](/media/markdown-guidance/monkeybanner.png)
+![Image Not Found](media/markdown-guidance/monkeybanner.png)
 
 ### Pages
 
