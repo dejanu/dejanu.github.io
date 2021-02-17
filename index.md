@@ -7,9 +7,8 @@
 I can live with doubt...
 
 
-
-1. [Privacy Policy](privacy_policy.html)
-2. [About me](about_me.html)
+1. [About me](about_me.html)
+2. [Privacy Policy](privacy_policy.html)
 
 ---
 
