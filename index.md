@@ -3,12 +3,12 @@
 ![Monkey Not Found](media/markdown-guidance/monkeybanner.png)
 
 ###        fib = lambda n: n if n < 2 else (fib(n - 1) + fib(n - 2))
-
 ------------------------------------------------![Octocat](https://github.githubassets.com/images/icons/emoji/octocat.png)------------------------------------------------
 
-
-1. [@me](about_me.html)
-2. [Privacy Policy](privacy_policy.html)
+| Pages         |                                        | 
+| ------------- |:--------------------------------------:|
+| Main Page     | [@me](about_me.html)                   | 
+| Policy        | [Privacy](privacy_policy.html)         |
 
 ```bash
      _.-._         ..-..         _.-._
