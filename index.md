@@ -1,14 +1,13 @@
+### fib = lambda n: n if n < 2 else (fib(n - 1) + fib(n - 2))
 
 
 ![Monkey Not Found](media/markdown-guidance/monkeybanner.png)
 
-###        fib = lambda n: n if n < 2 else (fib(n - 1) + fib(n - 2))
-------------------------------------------------![Octocat](https://github.githubassets.com/images/icons/emoji/octocat.png)------------------------------------------------
 
-| Pages         |                                        | 
-| ------------- |:--------------------------------------:|
-| Main Page     | [@me](about_me.html)                   | 
-| Policy        | [Privacy](privacy_policy.html)         |
+| Pages         | ![Octocat](https://github.githubassets.com/images/icons/emoji/octocat.png) | 
+| ------------- |:--------------------------------------------------------------------------:|
+| Main Page     |             [@me](about_me.html)                                           | 
+| Policy        |             [Privacy](privacy_policy.html)                                 |
 
 ```bash
      _.-._         ..-..         _.-._
