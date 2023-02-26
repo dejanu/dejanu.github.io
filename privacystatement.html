@@ -93,13 +93,13 @@
 
   <li class="list-group-item">Check the logs of a container (in the last 60 minutes)?</li>
   <code>
-      docker logs --since 60m <CONTAINER>
-      docker logs --since=1h <CONTAINER_ID>
+      docker logs --since 60m [CONTAINER]
+      docker logs --since=1h [CONTAINER_ID]
   </code>
 
   <li class="list-group-item">Get the logs of a specific container in a pod?</li>
   <code>
-      kubectl logs -f <POD_NAME> -c <CONTAINER_NAME>
+      kubectl logs -f [POD_NAME] -c [CONTAINER_NAME]
   </code>
 </ul>
 
