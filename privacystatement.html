@@ -68,10 +68,28 @@
     docker ps --format "{{.Names}} with {{.Status}}"
   </code>  
 
-  <li class="list-group-item">Dapibus ac facilisis in</li>
-  <li class="list-group-item">Morbi leo risus</li>
-  <li class="list-group-item">Porta ac consectetur ac</li>
-  <li class="list-group-item">Vestibulum at eros</li>
+  <li class="list-group-item">Remove unused/dangling images and stopped containers? (filter comes in handy). Remove stopped containers and remove unused images not just dangling ones:</li>
+  <code>
+    docker rm $(docker ps -aq -f status=exited) && docker image prune -a
+  </code> 
+
+  <li class="list-group-item">How can you list running containers using filters?</li>
+  <code>
+    docker ps --filter status=running --format '{{.Names}} {{.Status}}'
+  </code> 
+
+  <li class="list-group-item">Asses the status of docker daemon, docker disk usage, and docker containers?</li>
+    <code>
+      docker system info
+      docker system df
+    </code> 
+
+  <li class="list-group-item">What is the default network driver for docker? How can you list docker networks?</li>
+  <code>
+      # default network driver is bridge
+      # overlay is the default network driver for swarm, it connects multiple Docker daemons together and enable swarm services to communicate with each other
+      docker network ls
+  </code>
 </ul>
 
 
