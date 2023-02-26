@@ -63,7 +63,7 @@
 
 
 <ul class="list-group list-group-flush">
-  <li class="list-group-item">list containers using Pretty-print containers with a Go template instead of using | and awk:</li>
+  <li class="list-group-item">List containers using Pretty-print containers with a Go template instead of using | and awk:</li>
   <code>
     docker ps --format "{{.Names}} with {{.Status}}"
   </code>  
@@ -89,6 +89,17 @@
       # default network driver is bridge
       # overlay is the default network driver for swarm, it connects multiple Docker daemons together and enable swarm services to communicate with each other
       docker network ls
+  </code>
+
+  <li class="list-group-item">Check the logs of a container (in the last 60 minutes)?</li>
+  <code>
+      docker logs --since 60m <CONTAINER>
+      docker logs --since=1h <CONTAINER_ID>
+  </code>
+
+  <li class="list-group-item">Get the logs of a specific container in a pod?</li>
+  <code>
+      kubectl logs -f <POD_NAME> -c <CONTAINER_NAME>
   </code>
 </ul>
 
