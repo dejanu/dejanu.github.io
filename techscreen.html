@@ -25,7 +25,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-<title>PrivacyStatement</title>
+<title>TechScreen</title>
 </head>
 <!-- navbar -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -53,7 +53,7 @@
 
 <div class="jumbotron">
   <div class="container text-center">
-    <div class="alert alert-success" role="alert">
+    <div class="alert alert-danger" role="alert">
         <h4 class="alert-heading"> Important</h4>
         <p>Fundamental technical inquiries for SRE/DevOps expertise</p>
         <hr>
@@ -61,14 +61,14 @@
   </div>
 </div>
 
-
+<h4>Docker</h4>
 <ul class="list-group list-group-flush">
-  <li class="list-group-item">List containers using Pretty-print containers with a Go template instead of using | and awk:</li>
+  <li class="list-group-item">List containers using pretty-print with a Go template instead of using | and awk:</li>
   <code>
     docker ps --format "{{.Names}} with {{.Status}}"
   </code>  
 
-  <li class="list-group-item">Remove unused/dangling images and stopped containers? (filter comes in handy). Remove stopped containers and remove unused images not just dangling ones:</li>
+  <li class="list-group-item">Remove unused/dangling images and stopped containers? (filter comes in handy).Remove stopped containers and remove unused images not just dangling ones:</li>
   <code>
     docker rm $(docker ps -aq -f status=exited) && docker image prune -a
   </code> 
@@ -86,8 +86,7 @@
 
   <li class="list-group-item">What is the default network driver for docker? How can you list docker networks?</li>
   <code>
-      # default network driver is bridge; overlay is the default network driver for swarm, 
-      it connects multiple Docker daemons together and enable swarm services to communicate with each other
+      # default network driver is bridge; overlay is the default network driver for swarm, it connects multiple Docker daemons together and enable swarm services to communicate with each other
       docker network ls
   </code>
 
@@ -97,10 +96,24 @@
       docker logs --since=1h [CONTAINER_ID]
   </code>
 
+<hr>
+
+<h4>Kubernetes</h4>
   <li class="list-group-item">Get the logs of a specific container in a pod?</li>
   <code>
       kubectl logs -f [POD_NAME] -c [CONTAINER_NAME]
   </code>
+
+  <li class="list-group-item">Get all pods running in istio-system namespace</li>
+  <code>
+      kubectl n istio-system get po
+  </code>
+
+  <li class="list-group-item">Update running pods in a StatefulSet with new/updated configuration without disrupting the availability of running pods or services</li>
+  <code>
+    kubectl rollout restart deployment [DEPLOYMENT_NAME]
+  </code>
+
 </ul>
 
 
