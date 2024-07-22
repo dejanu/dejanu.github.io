@@ -22,9 +22,18 @@
     <div class="mb-3">
       <label for="symbol" class="form-label">Name</label>
       <input type="text" class="form-control" id="symbol" placeholder="Enter Symbol Name">
-
+    </div>
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
+
+  <script>
+    document.querySelector('form').addEventListener('submit', function(event) {
+      event.preventDefault();
+      // the link from href needs to have a placeholder for the symbol name https://bvb.ro/FinancialInstruments/Details/FinancialInstrumentsDetails.aspx?s
+      window.location.href = 'https://bvb.ro/FinancialInstruments/Details/FinancialInstrumentsDetails.aspx?s=' + document.querySelector('#symbol').value;
+    });
+  </script>
+</body>
 </body>
 
 <script>
