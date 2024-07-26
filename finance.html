@@ -18,13 +18,15 @@
 </head>
 
 <body>
-  <form>
-    <div class="mb-3">
-      <label for="symbol" class="form-label">Name</label>
-      <input type="text" class="form-control" id="symbol" placeholder="Enter Symbol Name" >
-    </div>
-    <button type="submit" target="_blank" class="btn btn-primary">Submit</button>
-  </form>
+  <div class="d-flex justify-content-center">
+    <form>
+      <div class="mb-3">
+        <label for="symbol" class="form-label">Symbol name:</label>
+        <input type="text" class="form-control" id="symbol" placeholder="Enter Symbol Name">
+      </div>
+      <button type="submit" target="_blank" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
 
   <script>
     document.querySelector('form').addEventListener('submit', function(event) {
@@ -34,7 +36,7 @@
     });
   </script>
 </body>
-</body>
+
 
 <script>
   document.querySelector('form').addEventListener('submit', function(event) {
@@ -47,5 +49,6 @@
 
 <ul>
   <li> <a href="https://pensie.metropolitanlife.ro/login">Pilon II Metropolitan</a> </li>
+  <p> O parte din contribuțiile pe care le plătești către sistemul de pensii de stat este redirecționată către Fondul de Pensii Administrat Privat Metropolitan Life. Mai concret, ai un cont individual de pensie cu banii virați de către Casa Națională de Pensii Publice și sunt investiți în interesul tău.</p>
   <li> <a href="https://www.metropolitanlife.ro/login/">Metropolitan</a> </li>
 </ul>
