@@ -30,11 +30,11 @@
       <p>Value in <b>GB</b> for ingested data: <input type="text" name="data_ingest" placeholder="Enter value i.e. 50 "></p>
       <p>Value in <b>days</b> for the rentention period: <input type="text" name="retention_period" placeholder="Enter value i.e. 30"></p>
       <p>Number of <b>data nodes</b>: <input type="text" name="data_nodes" placeholder="Enter value i.e. 4"></p>
-      <input type="checkbox" name="option" value="option1" id="option1" onclick="onlyOne(this)">
+      <input type="checkbox" name="option" value="10GB" id="option1" onclick="onlyOne(this)">
       <label for="option1">10GB</label><br>
-      <input type="checkbox" name="option" value="option2" id="option2" onclick="onlyOne(this)">
+      <input type="checkbox" name="option" value="20GB" id="option2" onclick="onlyOne(this)">
       <label for="option2">20GB</label><br>
-      <input type="checkbox" name="option" value="option3" id="option3" onclick="onlyOne(this)">
+      <input type="checkbox" name="option" value="30GB" id="option3" onclick="onlyOne(this)">
       <label for="option3">30GB</label><br>
       <p><button class="btn btn-primary" type="submit">Calculate</button></p>
   </form>
@@ -69,6 +69,16 @@
           
         // formula: total_shards_per_cluster = (data_ingest * retention_period)/shard_size * (1 + replica_factor)
         shard_size = 30; // GB
+
+        var checkboxes = document.getElementsByName('option');
+        var selectedValue = null;
+            checkboxes.forEach((item) => {
+                if (item.checked) {
+                    selectedValue = item.value;
+                }
+            });
+          alert("Selected value: " + selectedValue);
+
         replica_factor = 1;
         total_shards_per_cluster = (data_ingest_int * retention_period_int)/shard_size * (1 + replica_factor);
 
