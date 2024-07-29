@@ -20,23 +20,26 @@
 <div style="display: flex; justify-content: center;">
   <form method="post" onsubmit="readNodesNo(); return false;">
       <input type="text" name="data_ingest" placeholder="Enter value i.e. 50GB">
+      <input type="text" name="retention_period" placeholder="Enter value i.e. 30 days">
       <input type="submit" value="Submit">
   </form>
+  <div id="shards">No of shards</div>
 </div>
 
-<p><div id="shards">No of shards</div></p>
+
 
 <!-- create a js function that reads the node_no and write is in the page-->
 <script>
   function readNodesNo() {
       var nodes_no = document.getElementsByName("data_ingest")[0].value;
+      var retention_period = document.getElementsByName("retention_period")[0].value;
+
       // verify if values from form can be converted to int
       var nodes_no_int = parseInt(nodes_no,10)
       if (Number.isInteger(nodes_no_int)) {
           
         // need to return the following formula: total_shards_per_cluster = (data_ingest * retention_period)/shard_size + (1 + replica_factor)
         shard_size = 50; // GB
-        retention_period = 30; // days
         replica_factor = 1;
         total_shards_per_cluster = (nodes_no_int * retention_period)/shard_size + (1 + replica_factor);
         document.getElementById("shards").innerHTML = "Total shards per cluster: " + total_shards_per_cluster;
