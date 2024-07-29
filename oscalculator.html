@@ -41,8 +41,6 @@
 </div>
 
 
- 
-
 
 <div style="display: flex; justify-content: center;">
   <p><div id="shards">Shards per cluster: </div></p>
@@ -72,10 +70,10 @@
         // formula: total_shards_per_cluster = (data_ingest * retention_period)/shard_size * (1 + replica_factor)
         shard_size = 30; // GB
         replica_factor = 1;
-        total_shards_per_cluster = Math.ceil((data_ingest_int * retention_period_int)/shard_size * (1 + replica_factor));
+        total_shards_per_cluster = (data_ingest_int * retention_period_int)/shard_size * (1 + replica_factor);
 
         // formula: no_of_shards_per_node = no_of_shard_per_index / no_of_data_nodes
-        no_of_shards_per_node = total_shards_per_cluster/retention_period_int * data_nodes_int
+        no_of_shards_per_node = data_ingest_int * data_nodes_int
 
         document.getElementById("shards").innerHTML = "Total shards per cluster: " + total_shards_per_cluster;
         document.getElementById("nodeshards").innerHTML = "Shard per node: " + no_of_shards_per_node
