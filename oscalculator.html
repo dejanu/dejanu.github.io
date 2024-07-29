@@ -42,10 +42,10 @@
 
       if (Number.isInteger(nodes_no_int) && Number.isInteger(retention_period_int)) {
           
-        // need to return the following formula: total_shards_per_cluster = (data_ingest * retention_period)/shard_size + (1 + replica_factor)
+        // need to return the following formula: total_shards_per_cluster = (data_ingest * retention_period)/shard_size * (1 + replica_factor)
         shard_size = 20; // GB
         replica_factor = 1;
-        total_shards_per_cluster = (nodes_no_int * retention_period)/shard_size + (1 + replica_factor);
+        total_shards_per_cluster = (nodes_no_int * retention_period_int)/shard_size * (1 + replica_factor);
         document.getElementById("shards").innerHTML = "Total shards per cluster: " + total_shards_per_cluster;
       } else {
           document.getElementById("shards").innerHTML = "Please enter a valid integer value";
