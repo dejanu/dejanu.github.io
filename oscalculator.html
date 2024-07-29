@@ -28,6 +28,15 @@
   </form>
 </div>
 
+<form>
+  <input type="checkbox" name="option" value="option1" id="option1" onclick="onlyOne(this)">
+  <label for="option1">Option 1</label><br>
+  <input type="checkbox" name="option" value="option2" id="option2" onclick="onlyOne(this)">
+  <label for="option2">Option 2</label><br>
+  <input type="checkbox" name="option" value="option3" id="option3" onclick="onlyOne(this)">
+  <label for="option3">Option 3</label><br>
+</form>
+
 <div style="display: flex; justify-content: center;">
   <p><div id="shards">Shards per cluster: </div></p>
 </div>
@@ -69,6 +78,12 @@
           document.getElementById("nodeshards").innerHTML = "Please enter a valid integer value";
       }
   }
+  function onlyOne(checkbox) {
+            var checkboxes = document.getElementsByName('option');
+            checkboxes.forEach((item) => {
+                if (item !== checkbox) item.checked = false;
+            })
+        }
 </script>
 
 
