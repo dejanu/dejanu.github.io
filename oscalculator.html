@@ -77,6 +77,7 @@
                   shard_size = item.value;
                 }
             });
+          alert("Selected value: " + shard_size);
 
         replica_factor = 1;
         total_shards_per_cluster = (data_ingest_int * retention_period_int)/shard_size * (1 + replica_factor);
