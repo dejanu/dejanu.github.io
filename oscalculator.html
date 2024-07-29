@@ -28,9 +28,10 @@
 </div>
 
 <div style="display: flex; justify-content: center;">
-  <p><div id="shards">Shards per cluster:</div></p>
-  <br>
-  <p><div id="nodeshards">Shards per node</div></p>
+  <p><div id="shards">Shards per cluster: </div></p>
+</div>
+<div style="display: flex; justify-content: center;"></div>
+  <p><div id="nodeshards">Shards per node: </div></p>
 </div>
 
 <hr>
@@ -60,7 +61,7 @@
         no_of_shards_per_node = (total_shards_per_cluster/retention_period_int) * data_nodes_int
 
         document.getElementById("shards").innerHTML = "Total shards per cluster: " + total_shards_per_cluster;
-        document.getElementById("nodeshards").innerHTML = "Shard per node" + no_of_shards_per_node
+        document.getElementById("nodeshards").innerHTML = "Shard per node" + Math.ceil(no_of_shards_per_node)
     
       } else {
           document.getElementById("shards").innerHTML = "Please enter a valid integer value";
