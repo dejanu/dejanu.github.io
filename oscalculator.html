@@ -61,7 +61,7 @@
         no_of_shards_per_node = Math.ceil(total_shards_per_cluster/retention_period_int) * data_nodes_int
 
         document.getElementById("shards").innerHTML = "Total shards per cluster: " + total_shards_per_cluster;
-        document.getElementById("nodeshards").innerHTML = "Shard per node" + no_of_shards_per_node
+        document.getElementById("nodeshards").innerHTML = "Shard per node: " + no_of_shards_per_node
     
       } else {
           document.getElementById("shards").innerHTML = "Please enter a valid integer value";
