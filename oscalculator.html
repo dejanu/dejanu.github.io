@@ -84,21 +84,6 @@
     </div>
   </div>
   <div class="accordion-item">
-    <h2 class="accordion-header" id="headingTwo">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-        OpenSearch cluster health
-      </button>
-    </h2>
-    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <p>🟢 Green: all primary shards and their replicas are allocated to nodes </p>
-        <p>🟡 Yellow: all primary shards are allocated to nodes, but some replicas aren’t.</p>
-        <p>🔴 Red: at least one primary shard and its replicas are not allocated to any node</p>
-        <p> <strong>Unassigned shards cannot be deleted, an unassigned shard is not a corrupted shard, but a missing replica.</strong></p>
-      </div>
-    </div>
-  </div>
-  <div class="accordion-item">
     <h2 class="accordion-header" id="headingThree">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
         Number of shards
@@ -109,6 +94,22 @@
       <p>There is a limit on how many shards a node can handle, it’s useful to check how many shards a node can accommodate and search, by inspecting <a href="https://opensearch.org/docs/latest/install-and-configure/configuring-opensearch/cluster-settings/#cluster-level-shard-block-and-task-settings">cluster settings documentation</a>.</p>
       <p> <code>cluster.max_shards_per_node</code> setting limits the total number of primary and replica shards for the cluster. Default is <code>1000</code></p>
     </div>
+  </div>
+  </div>
+  <div class="accordion-item">
+  <h2 class="accordion-header" id="headingTwo">
+    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+      OpenSearch cluster health
+    </button>
+  </h2>
+  <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+    <div class="accordion-body">
+      <p>🟢 Green: all primary shards and their replicas are allocated to nodes </p>
+      <p>🟡 Yellow: all primary shards are allocated to nodes, but some replicas aren’t.</p>
+      <p>🔴 Red: at least one primary shard and its replicas are not allocated to any node</p>
+      <p> <strong>Unassigned shards cannot be deleted, an unassigned shard is not a corrupted shard, but a missing replica.</strong></p>
+    </div>
+  </div>
   </div>
 </div>
 
