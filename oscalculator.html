@@ -23,7 +23,7 @@
       <input type="text" name="retention_period" placeholder="Enter value i.e. 30 days">
       <input type="submit" value="Submit">
   </form>
-  <div id="shards">No of shards</div>
+  <p><div id="shards">Total no of shards:</div></p>
 </div>
 
 
@@ -36,7 +36,9 @@
 
       // verify if values from form can be converted to int
       var nodes_no_int = parseInt(nodes_no,10)
-      if (Number.isInteger(nodes_no_int)) {
+      var retention_period_int = parseInt(retention_period,10)
+
+      if (Number.isInteger(nodes_no_int) && Number.isInteger(retention_period_int)) {
           
         // need to return the following formula: total_shards_per_cluster = (data_ingest * retention_period)/shard_size + (1 + replica_factor)
         shard_size = 50; // GB
