@@ -68,16 +68,15 @@
       if (Number.isInteger(data_ingest_int) && Number.isInteger(retention_period_int) && Number.isInteger(data_nodes_int)) {
           
         // formula: total_shards_per_cluster = (data_ingest * retention_period)/shard_size * (1 + replica_factor)
-        shard_size = 30; // GB
+        // shard_size = 30; 
 
         var checkboxes = document.getElementsByName('option');
-        var selectedValue = null;
+        var shard_size = null;
             checkboxes.forEach((item) => {
                 if (item.checked) {
-                    selectedValue = item.value;
+                  shard_size = item.value;
                 }
             });
-          alert("Selected value: " + selectedValue);
 
         replica_factor = 1;
         total_shards_per_cluster = (data_ingest_int * retention_period_int)/shard_size * (1 + replica_factor);
