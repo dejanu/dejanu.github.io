@@ -19,42 +19,54 @@
 
 <hr>
 <div style="display: flex; justify-content: center;">
-  <form method="post" onsubmit="readNodesNo(); return false;">
+  <form method="post" onsubmit="readData(); return false;">
       <p><input type="text" name="data_ingest" placeholder="Value in GB by default i.e. 50 "></p>
       <p><input type="text" name="retention_period" placeholder="Value in days by default i.e. 30"></p>
+      <p><input type="text" name="data_nodes" placeholder="No of data nodes"></p>
       <p><button class="btn btn-primary" type="submit">Calculate</button></p>
   </form>
 </div>
 
 <div style="display: flex; justify-content: center;">
-  <p><div id="shards">Total no of shards:</div></p>
+  <p><div id="shards">Shards per cluster:</div></p>
+  <p><div id="nodeshards">Shards per node</div></p>
 </div>
 
 <hr>
 <br>
 
+
 <!-- create a js function that reads the node_no and write is in the page-->
 <script>
-  function readNodesNo() {
-      var nodes_no = document.getElementsByName("data_ingest")[0].value;
+  function readData() {
+      var data_ingest = document.getElementsByName("data_ingest")[0].value;
       var retention_period = document.getElementsByName("retention_period")[0].value;
+      var data_nodes = document.getElementsByName("data_nodes")[0].value;
 
       // verify if values from form can be converted to int
-      var nodes_no_int = parseInt(nodes_no,10)
+      var data_ingest_int = parseInt(data_ingest,10)
       var retention_period_int = parseInt(retention_period,10)
+      var data_nodes_int = parseInt(data_nodes,10)
 
-      if (Number.isInteger(nodes_no_int) && Number.isInteger(retention_period_int)) {
+      if (Number.isInteger(data_ingest_int) && Number.isInteger(retention_period_int) && Number.isInteger(data_nodes_int)) {
           
-        // need to return the following formula: total_shards_per_cluster = (data_ingest * retention_period)/shard_size * (1 + replica_factor)
-        shard_size = 20; // GB
+        // formula: total_shards_per_cluster = (data_ingest * retention_period)/shard_size * (1 + replica_factor)
+        shard_size = 30; // GB
         replica_factor = 1;
-        total_shards_per_cluster = (nodes_no_int * retention_period_int)/shard_size * (1 + replica_factor);
+        total_shards_per_cluster = (data_ingest_int * retention_period_int)/shard_size * (1 + replica_factor);
+
+        // formula: no_of_shards_per_node = no_of_shard_per_index / no_of_data_nodes
+        no_of_shards_per_node = (total_shards_per_cluster/retention_period_int) * data_nodes_int
+
         document.getElementById("shards").innerHTML = "Total shards per cluster: " + total_shards_per_cluster;
+        document.getElementById("nodeshards".innerHTML = "Shard per node" + no_of_shards_per_node
+    
       } else {
           document.getElementById("shards").innerHTML = "Please enter a valid integer value";
       }
   }
-  
+
+
 </script>
 </body>
 </html>
