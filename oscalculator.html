@@ -85,13 +85,15 @@
             });
         shard_size = parseInt(selectedValue,10)
 
-        replica_factor = 1;
-        total_shards_per_cluster = (data_ingest_int * retention_period_int)/shard_size * (1 + replica_factor);
+        replica_factor = 1; //replication factor of 1
+        primary_shards = Math.round(data_ingest_int/shard_size)
+        index_shards = primary_shards * (1 + replica_factor)
+        total_shards_per_cluster = (primary_shards * retention_period_int) * (1 + replica_factor);
 
         // formula: no_of_shards_per_node = no_of_shard_per_index / no_of_data_nodes
         no_of_shards_per_node = Math.round(total_shards_per_cluster / data_nodes_int)
 
-        document.getElementById("shards").innerHTML = "Total shards per cluster (defaults to one primary and one replica shard): " + total_shards_per_cluster;
+        document.getElementById("shards").innerHTML = "Shard" + "per index(replication factor of 1): " + index_shards + "per cluster" + total_shards_per_cluster;
         document.getElementById("nodeshards").innerHTML = "Shards per node: " + no_of_shards_per_node
     
       } else {
