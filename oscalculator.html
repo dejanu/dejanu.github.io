@@ -30,8 +30,8 @@
       <p>Value in <b>GB</b> for ingested data: <input type="text" name="data_ingest" placeholder="Enter value i.e. 50 "></p>
       <p>Value in <b>days</b> for the rentention period: <input type="text" name="retention_period" placeholder="Enter value i.e. 30"></p>
       <p>Number of <b>data nodes</b>: <input type="text" name="data_nodes" placeholder="Enter value i.e. 4"></p>
-      <div style="display: flex; justify-content: center;">
-        <input type="checkbox" name="option" value="10" id="option1" onclick="onlyOne(this)">
+      <div style="display: flex; justify-content: left;">
+        <input class="first-item" type="checkbox" name="option" value="10" id="option1" onclick="onlyOne(this)">
         <label for="option1">10GB </label><br>
         <input type="checkbox" name="option" value="20" id="option2" onclick="onlyOne(this)">
         <label for="option2">20GB </label><br>
@@ -42,14 +42,18 @@
       </div>
       <br>
       <p><button class="btn btn-primary" type="submit">Calculate</button></p>
-  </form>
-</div>
 
 
-<div class="d-inline-flex p-2 justify-content: center;">
-  <p><div id="shards">Shards per cluster: </div></p>
-  <p><div id="nodeshards">Shards per node: </div></p>
+      <hr/>
+      <div style="display: flex; justify-content: left;">
+        <p><div id="shards">Shards per cluster: </div></p>
+      </div>
+      <div style="display: flex; justify-content: left;">
+        <p><div id="nodeshards">Shards per node: </div></p>
+      </div>
+    </form>
 </div>
+
 
 <hr>
 <br>
@@ -150,7 +154,15 @@
   </div>
   </div>
 </div>
-
+<style>
+  .first-item {
+    margin-left: 0 !important;
+  }
+  input[type="checkbox"] {
+    margin-right: 10px;
+    margin-left: 10px;
+  }
+</style>
 
 
 </body>
