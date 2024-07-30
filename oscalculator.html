@@ -27,7 +27,7 @@
 
 <div style="display: flex; justify-content: center;">
   <form method="post" onsubmit="readData(); return false;">
-      <p>Value in <b>GB</b> for ingested data: <input type="text" name="data_ingest" placeholder="Enter value i.e. 50 "></p>
+      <p>Value in <b>GB</b> for ingested data in the index: <input type="text" name="data_ingest" placeholder="Enter value i.e. 50 "></p>
       <p>Value in <b>days</b> for the rentention period: <input type="text" name="retention_period" placeholder="Enter value i.e. 30"></p>
       <p>Number of <b>data nodes</b>: <input type="text" name="data_nodes" placeholder="Enter value i.e. 4"></p>
       <div style="display: flex; justify-content: left;">
@@ -118,7 +118,7 @@
     <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
       <div class="accordion-body">
         <p>Ideally shard sizes should be between 10–50 GB, the calculations based on desired shard size <strong>selection</strong>.</p>
-        <p>Shard size impacts both search latency and write performance, too many small shards will exhaust the memory (JVM Heap), and too few large shards prevent OpenSearch from properly distributing requests</p>
+        <p>Shard size impacts both search latency and write performance, too many small shards will exhaust the memory (JVM Heap), and too few large shards prevent OpenSearch from properly distributing requests.</p>
       </div>
     </div>
   </div>
@@ -131,7 +131,7 @@
     <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
       <div class="accordion-body">
       <p>There is a limit on how many shards a node can handle, it’s useful to check how many shards a node can accommodate and search, by inspecting <a href="https://opensearch.org/docs/latest/install-and-configure/configuring-opensearch/cluster-settings/#cluster-level-shard-block-and-task-settings">cluster settings documentation</a>.</p>
-      <p><code>cluster.max_shards_per_node</code> setting limits the total number of primary and replica shards for the cluster. Default is <code>1000</code></p>
+      <p><code>cluster.max_shards_per_node</code> setting limits the total number of primary and replica shards for the cluster, default is <code>1000</code></p>
       <p><img src="ossrc/indexvssearch.png" class="img-fluid" alt="Responsive image"></p>
     </div>
   </div>
