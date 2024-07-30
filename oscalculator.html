@@ -16,8 +16,6 @@
 <title>OS calculator</title>
 </head>
 
-
-
 <div style="display: flex; justify-content: center;">
 <p><h2>Your <s>trusty</s> OpenSearch calculator</h2></p>
 </div>
@@ -31,6 +29,7 @@
       <p>Value in <b>days</b> for the rentention period: <input type="text" name="retention_period" placeholder="Enter value i.e. 30"></p>
       <p>Number of <b>data nodes</b>: <input type="text" name="data_nodes" placeholder="Enter value i.e. 4"></p>
       <p>Select shard size(ideally shard sizes should be between 10–50 GB):</p>
+      <i>For fast indexing, you need as many shards as possible; For fast searching, it is better to have as few shards as possible</i>
       <div style="display: flex; justify-content: left;">
         <input class="first-item" type="checkbox" name="option" value="10" id="option1" onclick="onlyOne(this)">
         <label for="option1">10GB </label><br>
