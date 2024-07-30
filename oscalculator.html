@@ -30,14 +30,19 @@
       <p>Value in <b>GB</b> for ingested data: <input type="text" name="data_ingest" placeholder="Enter value i.e. 50 "></p>
       <p>Value in <b>days</b> for the rentention period: <input type="text" name="retention_period" placeholder="Enter value i.e. 30"></p>
       <p>Number of <b>data nodes</b>: <input type="text" name="data_nodes" placeholder="Enter value i.e. 4"></p>
-      <input type="checkbox" name="option" value="10" id="option1" onclick="onlyOne(this)">
-      <label for="option1">10GB</label><br>
-      <input type="checkbox" name="option" value="20" id="option2" onclick="onlyOne(this)">
-      <label for="option2">20GB</label><br>
-      <input type="checkbox" name="option" value="30" id="option3" onclick="onlyOne(this)">
-      <label for="option3">30GB</label><br>
-      <input type="checkbox" name="option" value="40" id="option3" onclick="onlyOne(this)">
-      <label for="option3">40GB</label><br>
+      <div style="display: flex; justify-content: center;">
+        <input type="checkbox" name="option" value="10" id="option1" onclick="onlyOne(this)">
+        <label for="option1">10GB</label><br>
+        <input type="checkbox" name="option" value="20" id="option2" onclick="onlyOne(this)">
+        <label for="option2">20GB</label><br>
+      </div>
+      <div style="display: flex; justify-content: center;">
+        <input type="checkbox" name="option" value="30" id="option3" onclick="onlyOne(this)">
+        <label for="option3">30GB</label><br>
+        <input type="checkbox" name="option" value="40" id="option4" onclick="onlyOne(this)">
+        <label for="option4">40GB</label><br>
+      </div>
+      <br>
       <p><button class="btn btn-primary" type="submit">Calculate</button></p>
   </form>
 </div>
