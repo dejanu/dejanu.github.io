@@ -28,8 +28,20 @@
       <p>Value in <b>GB</b> for ingested data in the index (daily): <input type="text" name="data_ingest" placeholder="Enter value i.e. 50 "></p>
       <p>Value in <b>days</b> for the rentention period: <input type="text" name="retention_period" placeholder="Enter value i.e. 30"></p>
       <p>Number of <b>data nodes</b>: <input type="text" name="data_nodes" placeholder="Enter value i.e. 4"></p>
-      <p>Select shard size(10–30GB for workloads that prioritize low latency e.g. search workloads/30–50GB e.g. logs workloads)</p>
-    
+      
+      <div class="dropdown">
+        <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Workload Type
+        </button>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Search Intensive</a></li>
+          <li><a class="dropdown-item" href="#">Ingest Intensive</a></li>
+        </ul>
+      </div>
+
+      <p id="workload-description"></p>
+
+      
       <div style="display: flex; justify-content: left;">
         <input class="first-item" type="checkbox" name="option" value="10" id="option1" onclick="onlyOne(this)">
         <label for="option1">10GB </label><br>
@@ -37,13 +49,9 @@
         <label for="option2">20GB </label><br>
         <input type="checkbox" name="option" value="30" id="option3" onclick="onlyOne(this)">
         <label for="option3">30GB </label><br>
-        <input type="checkbox" name="option" value="40" id="option4" onclick="onlyOne(this)">
-        <label for="option4">40GB </label><br>
       </div>
       <br>
       <p><button class="btn btn-primary" type="submit">Calculate</button></p>
-      <p><i>For fast indexing, you need as many shards as possible</i></p>
-      <p><i>For fast searching, it is better to have as few shards as possible</i></p>
 
       <hr/>
       <div style="display: flex; justify-content: left;">
@@ -56,11 +64,30 @@
 </div>
 
 
+
 <hr>
 <br>
 
 <!-- create a js function that reads the node_no and write is in the page-->
 <script>
+     const dropdown = document.querySelector('.dropdown');
+        const workloadDescription = document.getElementById('workload-description');
+
+        dropdown.addEventListener('click', function(event) {
+          if (event.target.classList.contains('dropdown-item')) {
+        const selectedOption = event.target.textContent;
+        if (selectedOption === 'Search Intensive') {
+          //For fast searching, it is better to have as few shards as possible
+          workloadDescription.textContent = 'This workload type prioritizes low latency and is suitable for search workloads. Recommended shard size 10–30GB';
+        } else if (selectedOption === 'Ingest Intensive') {
+          // For fast indexing, you need as many shards as possible
+          workloadDescription.textContent = 'This workload type prioritizes data ingestion and is suitable for ingest workloads. Recommended shard size 30–50GB';
+        } else {
+          workloadDescription.textContent = '';
+        }
+          }
+        });
+
   function readData() {
       var data_ingest = document.getElementsByName("data_ingest")[0].value;
       var retention_period = document.getElementsByName("retention_period")[0].value;
