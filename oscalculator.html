@@ -16,88 +16,126 @@
 <title>OpenSearch calculator</title>
 </head>
 
-<div style="display: flex; justify-content: center;">
-<p><h2>Your <s>trusty</s> OpenSearch calculator</h2></p>
+<div class="root">
+  <header>
+   <h2>Your <s>trusty</s> OpenSearch calculator</h2>
+  </header>
+  <content>
+    <div class="left-side">
+      <div>
+        <form method="post" onsubmit="readData(); return false;" class="forms">
+          <label for="data_ingest">Value in <b>GB</b> for ingested data in the index (daily): </label>
+          <input type="text" name="data_ingest" placeholder="Enter value i.e. 50 ">
+
+          <label for="retention_period">Value in <b>days</b> for the rentention period:</label>
+          <input type="text" name="retention_period" placeholder="Enter value i.e. 30">
+
+          <label for="data_nodes">Number of <b>data nodes</b>: </label>
+          <input type="text" name="data_nodes" placeholder="Enter value i.e. 4">
+
+          <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Workload Type
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" data-value="search-intensive" href="#">Search Intensive</a></li>
+              <li><a class="dropdown-item" data-value="ingest-intensive" href="#">Ingest Intensive</a></li>
+            </ul>
+          </div>
+    
+          <p id="workload-description">Recommendations...</p>
+    
+          <!-- this get generated -->
+          <div id="shard-size"></div>
+          <br>
+          <p><button class="btn btn-primary" type="submit">Calculate</button></p>
+    
+          <hr/>
+          <div >
+            <p><div id="shards">Shards per cluster: </div></p>
+          </div>
+          <div>
+            <p><div id="nodeshards">Shards per node: </div></p>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="right-side">
+      <div class="accordion" id="accordionExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingOne">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              Shard size
+            </button>
+          </h2>
+          <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <p>Ideally shard sizes should be between 10–50 GB, the calculations are done based on desired shard size <strong>selection</strong>.</p>
+              <p>Shard size impacts both search latency and write performance, too many small shards will exhaust the memory (JVM Heap), and too few large shards prevent OpenSearch from properly distributing requests.</p>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingThree">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+              Number of shards
+            </button>
+          </h2>
+          <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+            <p>There is a limit on how many shards a node can handle, it’s useful to check how many shards a node can accommodate and search, by inspecting <a href="https://opensearch.org/docs/latest/install-and-configure/configuring-opensearch/cluster-settings/#cluster-level-shard-block-and-task-settings">cluster settings documentation</a>.</p>
+            <p><code>cluster.max_shards_per_node</code> setting limits the total number of primary and replica shards for the cluster, default is <code>1000</code></p>
+            <p><img src="ossrc/indexvssearch.png" class="img-fluid" alt="Responsive image"></p>
+          </div>
+        </div>
+        </div>
+        <div class="accordion-item">
+        <h2 class="accordion-header" id="headingTwo">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            OpenSearch cluster health
+          </button>
+        </h2>
+        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <p>🟢 Green: all primary shards and their replicas are allocated to nodes </p>
+            <p>🟡 Yellow: all primary shards are allocated to nodes, but some replicas aren’t.</p>
+            <p>🔴 Red: at least one primary shard and its replicas are not allocated to any node</p>
+            <p>📌<strong>Unassigned shards cannot be deleted, an unassigned shard is not a corrupted shard, but a missing replica.</strong></p>
+          </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </content>
 </div>
-
-<br>
-<hr>
-
-<div style="display: flex; justify-content: center;">
-  <form method="post" onsubmit="readData(); return false;">
-      <p>Value in <b>GB</b> for ingested data in the index (daily): <input type="text" name="data_ingest" placeholder="Enter value i.e. 50 "></p>
-      <p>Value in <b>days</b> for the rentention period: <input type="text" name="retention_period" placeholder="Enter value i.e. 30"></p>
-      <p>Number of <b>data nodes</b>: <input type="text" name="data_nodes" placeholder="Enter value i.e. 4"></p>
-      
-      <div class="dropdown">
-        <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-          Workload Type
-        </button>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">Search Intensive</a></li>
-          <li><a class="dropdown-item" href="#">Ingest Intensive</a></li>
-        </ul>
-      </div>
-
-      <p id="workload-description">This workload type prioritizes 
-        <b><span id="workloadtype-placeholder">...</span></b> 
-        and is suitable for <b><span id="suitable-placeholder">...</span></b>. 
-        Recommendations: Shard size: <b><span id="shard-size-placeholder">...</span></b>
-      </p>
-
-      
-      <div style="display: flex; justify-content: left;">
-        <input class="first-item" type="checkbox" name="option" value="10" id="option1" onclick="onlyOne(this)">
-        <label for="option1">10GB</label><br>
-        <input type="checkbox" name="option" value="20" id="option2" onclick="onlyOne(this)">
-        <label for="option2">20GB</label><br>
-        <input type="checkbox" name="option" value="30" id="option3" onclick="onlyOne(this)">
-        <label for="option3">30GB</label><br>
-        <input type="checkbox" name="option" value="40" id="option4" onclick="onlyOne(this)">
-        <label for="option3">40GB</label><br>
-      </div>
-      <br>
-      <p><button class="btn btn-primary" type="submit">Calculate</button></p>
-
-      <hr/>
-      <div style="display: flex; justify-content: left;">
-        <p><div id="shards">Shards per cluster: </div></p>
-      </div>
-      <div style="display: flex; justify-content: left;">
-        <p><div id="nodeshards">Shards per node: </div></p>
-      </div>
-    </form>
-</div>
-
-
-
-<hr>
-<br>
 
 <!-- create a js function that reads the node_no and write is in the page-->
 <script>
+    function setShardsize (shard_size) {
+      let shardsPlaceholder = document.getElementById('shard-size');
+      shardsPlaceholder.innerHTML = '';
+      shard_size.forEach(shard => {
+        shardsPlaceholder.innerHTML += `
+          <input type="checkbox" name="option" value="${shard}" id="option${shard}" onclick="onlyOne(this)">
+          <label for="option${shard}">${shard}GB</label><br>
+        `;
+      });
+    }
+
+
      const dropdown = document.querySelector('.dropdown');
         const workloadDescription = document.getElementById('workload-description');
 
         dropdown.addEventListener('click', function(event) {
-          if (event.target.classList.contains('dropdown-item')) {
-        const selectedOption = event.target.textContent;
-        if (selectedOption === 'Search Intensive') {
-          //For fast searching, it is better to have as few shards as possible
-          // workloadDescription.textContent = 'This workload type prioritizes low latency and is suitable for search workloads. Recommended shard size 10–30GB';
-          document.getElementById("workloadtype-placeholder").textContent = 'low latency';
-          document.getElementById("suitable-placeholder").textContent = 'search workloads';
-          document.getElementById("shard-size-placeholder").textContent = '10–30GB';
-        } else if (selectedOption === 'Ingest Intensive') {
-          // For fast indexing, you need as many shards as possible
-          // workloadDescription.textContent = 'This workload type prioritizes data indexing and is suitable for ingest workloads. Recommended shard size 30–50GB';
-          document.getElementById("workloadtype-placeholder").textContent = 'data indexing';
-          document.getElementById("suitable-placeholder").textContent = 'ingest workloads';
-          document.getElementById("shard-size-placeholder").textContent = '10–30GB';
-          document.getElementById("shard-size-placeholder").textContent = '30–50GB';
-        } else {
-          workloadDescription.textContent = '';
-        }
+          switch (event.target.dataset.value) {
+            case 'search-intensive':
+              workloadDescription.innerHTML = '<p><strong>Search intensive</strong> prioritizes <strong>low latency</strong> and is suitable for <strong>search workloads</strong>.</p> <p>Recommended shard size <strong>10–30GB</strong></p> <p>Replicas improve search performance, so you might want more if you have a read-heavy workload</p>';
+              setShardsize([10, 20, 30]);
+              break;
+            case 'ingest-intensive':
+              workloadDescription.innerHTML = '<p><strong>Ingest intensive</strong> type prioritizes <strong>data indexing</strong>.</p> <p>Recommended shard size <strong>30–50GB</strong></p> <p>Increase Index refresh frequency to speed up indexing (default is 1s)</p>';
+              setShardsize([30, 40, 50]);
+              break;
           }
         });
 
@@ -150,51 +188,6 @@
 </script>
 
 
-
-<div class="accordion" id="accordionExample">
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingOne">
-      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-        Shard size
-      </button>
-    </h2>
-    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-        <p>Ideally shard sizes should be between 10–50 GB, the calculations are done based on desired shard size <strong>selection</strong>.</p>
-        <p>Shard size impacts both search latency and write performance, too many small shards will exhaust the memory (JVM Heap), and too few large shards prevent OpenSearch from properly distributing requests.</p>
-      </div>
-    </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="headingThree">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-        Number of shards
-      </button>
-    </h2>
-    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-      <p>There is a limit on how many shards a node can handle, it’s useful to check how many shards a node can accommodate and search, by inspecting <a href="https://opensearch.org/docs/latest/install-and-configure/configuring-opensearch/cluster-settings/#cluster-level-shard-block-and-task-settings">cluster settings documentation</a>.</p>
-      <p><code>cluster.max_shards_per_node</code> setting limits the total number of primary and replica shards for the cluster, default is <code>1000</code></p>
-      <p><img src="ossrc/indexvssearch.png" class="img-fluid" alt="Responsive image"></p>
-    </div>
-  </div>
-  </div>
-  <div class="accordion-item">
-  <h2 class="accordion-header" id="headingTwo">
-    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-      OpenSearch cluster health
-    </button>
-  </h2>
-  <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-    <div class="accordion-body">
-      <p>🟢 Green: all primary shards and their replicas are allocated to nodes </p>
-      <p>🟡 Yellow: all primary shards are allocated to nodes, but some replicas aren’t.</p>
-      <p>🔴 Red: at least one primary shard and its replicas are not allocated to any node</p>
-      <p>📌<strong>Unassigned shards cannot be deleted, an unassigned shard is not a corrupted shard, but a missing replica.</strong></p>
-    </div>
-  </div>
-  </div>
-</div>
 <style>
   .first-item {
     margin-left: 0 !important;
@@ -202,6 +195,22 @@
   input[type="checkbox"] {
     margin-right: 10px;
     margin-left: 10px;
+  }
+
+  .root {
+    display: grid;
+    margin: 30px;
+    row-gap: 30px;
+  }
+
+  header {
+    justify-self: center;
+  }
+
+  content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
   }
 </style>
 
