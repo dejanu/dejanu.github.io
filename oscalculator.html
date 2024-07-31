@@ -13,7 +13,7 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
-<title>OS calculator</title>
+<title>OpenSearch calculator</title>
 </head>
 
 <div style="display: flex; justify-content: center;">
@@ -39,16 +39,22 @@
         </ul>
       </div>
 
-      <p id="workload-description"></p>
+      <p id="workload-description">This workload type prioritizes 
+        <b><span id="workloadtype-placeholder">...</span></b> 
+        and is suitable for <b><span id="suitable-placeholder">...</span></b>. 
+        Recommendations: Shard size: <b><span id="shard-size-placeholder">...</span></b>
+      </p>
 
       
       <div style="display: flex; justify-content: left;">
         <input class="first-item" type="checkbox" name="option" value="10" id="option1" onclick="onlyOne(this)">
-        <label for="option1">10GB </label><br>
+        <label for="option1">10GB</label><br>
         <input type="checkbox" name="option" value="20" id="option2" onclick="onlyOne(this)">
-        <label for="option2">20GB </label><br>
+        <label for="option2">20GB</label><br>
         <input type="checkbox" name="option" value="30" id="option3" onclick="onlyOne(this)">
-        <label for="option3">30GB </label><br>
+        <label for="option3">30GB</label><br>
+        <input type="checkbox" name="option" value="40" id="option4" onclick="onlyOne(this)">
+        <label for="option3">40GB</label><br>
       </div>
       <br>
       <p><button class="btn btn-primary" type="submit">Calculate</button></p>
@@ -78,10 +84,17 @@
         const selectedOption = event.target.textContent;
         if (selectedOption === 'Search Intensive') {
           //For fast searching, it is better to have as few shards as possible
-          workloadDescription.textContent = 'This workload type prioritizes low latency and is suitable for search workloads. Recommended shard size 10–30GB';
+          // workloadDescription.textContent = 'This workload type prioritizes low latency and is suitable for search workloads. Recommended shard size 10–30GB';
+          document.getElementById("workloadtype-placeholder").textContent = 'low latency';
+          document.getElementById("suitable-placeholder").textContent = 'search workloads';
+          document.getElementById("shard-size-placeholder").textContent = '10–30GB';
         } else if (selectedOption === 'Ingest Intensive') {
           // For fast indexing, you need as many shards as possible
-          workloadDescription.textContent = 'This workload type prioritizes data ingestion and is suitable for ingest workloads. Recommended shard size 30–50GB';
+          // workloadDescription.textContent = 'This workload type prioritizes data indexing and is suitable for ingest workloads. Recommended shard size 30–50GB';
+          document.getElementById("workloadtype-placeholder").textContent = 'data indexing';
+          document.getElementById("suitable-placeholder").textContent = 'ingest workloads';
+          document.getElementById("shard-size-placeholder").textContent = '10–30GB';
+          document.getElementById("shard-size-placeholder").textContent = '30–50GB';
         } else {
           workloadDescription.textContent = '';
         }
