@@ -24,14 +24,15 @@
     <div class="left-side">
       <div>
         <form method="post" onsubmit="readData(); return false;" class="forms">
-          <label for="data_ingest">Value in <b>GB</b> for ingested data in the index (daily): </label>
-          <input type="text" name="data_ingest" placeholder="Enter value i.e. 50 ">
+
+          <label for="data_ingest">Value in <b>GB</b> for ingested data in the index (daily):</label>
+          <p><input type="text" name="data_ingest" placeholder="Enter value i.e. 50 "></p>
 
           <label for="retention_period">Value in <b>days</b> for the rentention period:</label>
-          <input type="text" name="retention_period" placeholder="Enter value i.e. 30">
+          <p><input type="text" name="retention_period" placeholder="Enter value i.e. 30"></p>
 
-          <label for="data_nodes">Number of <b>data nodes</b>: </label>
-          <input type="text" name="data_nodes" placeholder="Enter value i.e. 4">
+          <label for="data_nodes">Number of <b>data nodes</b>:</label>
+          <p><input type="text" name="data_nodes" placeholder="Enter value i.e. 4"></p>
 
           <div class="dropdown">
             <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -122,7 +123,6 @@
       });
     }
 
-
      const dropdown = document.querySelector('.dropdown');
         const workloadDescription = document.getElementById('workload-description');
 
@@ -171,7 +171,7 @@
         // formula: no_of_shards_per_node = no_of_shard_per_index / no_of_data_nodes
         no_of_shards_per_node = Math.round(total_shards_per_cluster / data_nodes_int)
 
-        document.getElementById("shards").innerHTML = "Shard" + "per index(replication factor of 1): " + index_shards + " per cluster: " + total_shards_per_cluster;
+        document.getElementById("shards").innerHTML = "Shards " + "per index(replication factor of 1): " + index_shards + " Shards per cluster: " + total_shards_per_cluster;
         document.getElementById("nodeshards").innerHTML = "Shards per node: " + no_of_shards_per_node
     
       } else {
@@ -211,6 +211,11 @@
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 10px;
+  }
+
+  .left-side {
+    display: grid;
+    justify-content: center;
   }
 
   @media screen and (max-width: 600px) {
