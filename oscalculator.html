@@ -52,12 +52,12 @@
           <p><button class="btn btn-primary" type="submit">Calculate</button></p>
     
           <hr/>
-          <div >
-            <p><div id="shards">Shards per cluster: </div></p>
+         
+          <div class="vstack gap-3">
+            <div class="p-2" id="shards" >Shards per cluster...</div>
+            <div class="p-2" id="nodeshards">Shards per node ...</div>
           </div>
-          <div>
-            <p><div id="nodeshards">Shards per node: </div></p>
-          </div>
+
         </form>
       </div>
     </div>
@@ -222,6 +222,14 @@
     content {
       grid-template-columns: 1fr;
     }
+  }
+
+  .vstack {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  align-self: stretch;
+  background-color: #f0f8ff;
   }
 </style>
 
