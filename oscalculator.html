@@ -112,6 +112,11 @@
 
 <!-- create a js function that reads the node_no and write is in the page-->
 <script>
+    function isValidInteger(str) {
+      // Check if the entire string is a valid integer
+      return /^-?\d+$/.test(str);
+      }
+
     function setShardsize (shard_size) {
       let shardsPlaceholder = document.getElementById('shard-size');
       shardsPlaceholder.innerHTML = '';
@@ -144,15 +149,13 @@
       var retention_period = document.getElementsByName("retention_period")[0].value;
       var data_nodes = document.getElementsByName("data_nodes")[0].value;
 
-      // verify if values from form can be converted to int
-      var data_ingest_int = parseInt(data_ingest,10)
-      var retention_period_int = parseInt(retention_period,10)
-      var data_nodes_int = parseInt(data_nodes,10)
-
-      if (Number.isInteger(data_ingest_int) && Number.isInteger(retention_period_int) && Number.isInteger(data_nodes_int)) {
+      // verify if values from form can be converted to integers
+      if (isValidInteger(data_ingest) && isValidInteger(retention_period) && isValidInteger(data_nodes)) {
           
+        var data_ingest_int = parseInt(data_ingest,10)
+        var retention_period_int = parseInt(retention_period,10)
+        var data_nodes_int = parseInt(data_nodes,10)
         // formula: total_shards_per_cluster = (data_ingest * retention_period)/shard_size * (1 + replica_factor)
-        // shard_size = 30; 
 
         var checkboxes = document.getElementsByName('option');
             var selectedValue = null;
