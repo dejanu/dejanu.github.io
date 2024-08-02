@@ -114,7 +114,7 @@
           </h2>
           <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
             <div class="accordion-body">
-              <p>Each shard is a full Lucene Index, and each instance of Lucene is a running process that consumes CPU and memory.</p>
+              <p>Each shard is a full <a href="https://lucene.apache.org/core/8_0_0/core/org/apache/lucene/index/package-summary.html">Lucene Index</a>, and each instance of Lucene is a running process that consumes CPU and memory.</p>
               <p>When a shard is involved in an indexing/search request, it uses a CPU to process the request. As a best practice, use an initial scale point of 1.5 vCPU per shard.</p>
               <p>A small set of large shards uses fewer resources than many small shards.</p>
             </div>
