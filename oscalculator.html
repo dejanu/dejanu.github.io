@@ -157,7 +157,7 @@
         dropdown.addEventListener('click', function(event) {
           switch (event.target.dataset.value) {
             case 'search-intensive':
-              workloadDescription.innerHTML = '<p><strong>Search intensive</strong> prioritizes <strong>low latency</strong> and is suitable for <strong>search workloads</strong>.</p> <p>Recommended shard size <strong>10–30GB</strong></p> <p>Replicas improve search performance, so you might want more if you have a read-heavy workload</p>';
+              workloadDescription.innerHTML = '<p><strong>Search intensive</strong> prioritizes <strong>low latency</strong> and is suitable for <strong>search workloads</strong>.</p> <p>Recommended shard size <strong>10–30GB</strong></p> <p>Replicas improve search performance, so you might want more if you have a read-heavy workload.</p>';
               setShardsize([10, 20, 30]);
               break;
             case 'ingest-intensive':
@@ -171,8 +171,7 @@
       var data_ingest = document.getElementsByName("data_ingest")[0].value;
       var retention_period = document.getElementsByName("retention_period")[0].value;
       var data_nodes = document.getElementsByName("data_nodes")[0].value;
-
-      // verify if values from form can be converted to integers
+      
       if (isValidInteger(data_ingest) && isValidInteger(retention_period) && isValidInteger(data_nodes)) {
           
         var data_ingest_int = parseInt(data_ingest,10)
