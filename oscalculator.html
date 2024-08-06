@@ -54,7 +54,7 @@
     
           <p id="workload-description">Recommendations...</p>
     
-          <!-- this get generated -->
+          <!-- this gets generated -->
           <div id="shard-size"></div>
           <br>
           <p><button class="btn btn-primary" type="submit">Calculate</button></p>
@@ -135,10 +135,9 @@
 
 
 <script>
-    function isValidInteger(str) {
-      // Check if the entire string is a valid integer
-      return /^-?\d+$/.test(str);
-      }
+    function isValidNumber(str) {
+      return /^-?\d+(\.\d+)?$/.test(str);
+    }
 
     function setShardsize (shard_size) {
       let shardsPlaceholder = document.getElementById('shard-size');
@@ -172,7 +171,7 @@
       var retention_period = document.getElementsByName("retention_period")[0].value;
       var data_nodes = document.getElementsByName("data_nodes")[0].value;
       
-      if (isValidInteger(data_ingest) && isValidInteger(retention_period) && isValidInteger(data_nodes)) {
+      if (isValidNumber(data_ingest) && isValidNumber(retention_period) && isValidNumber(data_nodes)) {
           
         var data_ingest_int = parseInt(data_ingest,10)
         var retention_period_int = parseInt(retention_period,10)
@@ -189,7 +188,8 @@
         shard_size = parseInt(selectedValue,10)
 
         replica_factor = 1; //replication factor of 1
-        primary_shards = Math.round(data_ingest_int/shard_size)
+        primary_shards = Math.ceil(data_ingest_int/shard_size)
+      
         index_shards = primary_shards * (1 + replica_factor)
         total_shards_per_cluster = (primary_shards * retention_period_int) * (1 + replica_factor);
 
