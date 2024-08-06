@@ -173,7 +173,7 @@
       
       if (isValidNumber(data_ingest) && isValidNumber(retention_period) && isValidNumber(data_nodes)) {
           
-        var data_ingest_int = parseInt(data_ingest,10)
+        var data_ingest_int = parseFloat(data_ingest,10)
         var retention_period_int = parseInt(retention_period,10)
         var data_nodes_int = parseInt(data_nodes,10)
         // formula: total_shards_per_cluster = (data_ingest * retention_period)/shard_size * (1 + replica_factor)
@@ -189,7 +189,9 @@
 
         replica_factor = 1; //replication factor of 1
         primary_shards = Math.ceil(data_ingest_int/shard_size)
-      
+        console.log(data_ingest_int)
+        console.log(shard_size)
+        console.log(primary_shards)
         index_shards = primary_shards * (1 + replica_factor)
         total_shards_per_cluster = (primary_shards * retention_period_int) * (1 + replica_factor);
 
