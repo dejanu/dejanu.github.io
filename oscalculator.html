@@ -92,9 +92,11 @@
           </h2>
           <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
             <div class="accordion-body">
-            <p>There is a limit on how many shards a node can handle, it’s useful to check how many shards a node can accommodate and search, by inspecting <a href="https://opensearch.org/docs/latest/install-and-configure/configuring-opensearch/cluster-settings/#cluster-level-shard-block-and-task-settings">cluster settings documentation</a>.</p>
+            <p>There is a limit on how many shards a node can handle, it’s useful to check how many shards a node can accommodate, inspect <a href="https://opensearch.org/docs/latest/install-and-configure/configuring-opensearch/cluster-settings/#cluster-level-shard-block-and-task-settings">cluster settings documentation</a>.</p>
             <p><code>cluster.max_shards_per_node</code> setting limits the total number of primary and replica shards for the cluster, default is <code>1000</code></p>
+            <p>Set your index shard count to be divisible by your instance count,to ensure a even distribution of shards across the data nodes.</p>
             <p><img src="src/indexvssearch.png" class="img-fluid" alt="Responsive image"></p>
+            <p>Shard distribution across cluster nodes, sorted:<code>GET _cat/shards?v=true&s=store:desc&h=index,node,store</code></p>
           </div>
         </div>
         </div>
