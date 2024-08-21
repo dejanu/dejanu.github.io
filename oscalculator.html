@@ -62,7 +62,8 @@
           <hr/>
          
           <div class="vstack gap-3 bg-primary result">
-            <div class="p-2" id="shards" >Shards per cluster...</div>
+            <div class="p-2" id="indexshards" >Shards per cluster...</div>
+            <div class="p-2" id="clustershards" > </div>
             <div class="p-2" id="nodeshards">Shards per node...</div>
           </div>
 
@@ -200,8 +201,9 @@
         // formula: no_of_shards_per_node = no_of_shard_per_index / no_of_data_nodes
         no_of_shards_per_node = Math.round(total_shards_per_cluster / data_nodes_int)
 
-        document.getElementById("shards").innerHTML = "Shards " + "per index(replication factor of 1): " + index_shards + " Shards per cluster: " + total_shards_per_cluster;
-        document.getElementById("nodeshards").innerHTML = "Shards per node: " + no_of_shards_per_node
+        document.getElementById("indexshards").innerHTML = "Shards " + "per index(replication factor of 1): " + index_shards;
+        document.getElementById("clustershards").innerHTML = "Shards per cluster: " + total_shards_per_cluster;
+        document.getElementById("nodeshards").innerHTML = "Shards per node: " + no_of_shards_per_node;
     
       } else {
           document.getElementById("shards").innerHTML = "Please enter a valid integer value";
