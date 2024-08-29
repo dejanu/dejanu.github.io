@@ -179,7 +179,6 @@
         var data_ingest_int = parseFloat(data_ingest,10)
         var retention_period_int = parseInt(retention_period,10)
         var data_nodes_int = parseInt(data_nodes,10)
-        // formula: total_shards_per_cluster = (data_ingest * retention_period)/shard_size * (1 + replica_factor)
 
         var checkboxes = document.getElementsByName('option');
             var selectedValue = null;
@@ -191,10 +190,8 @@
         shard_size = parseInt(selectedValue,10)
 
         replica_factor = 1; //replication factor of 1
+        // formula: total_shards_per_cluster = (data_ingest * retention_period)/shard_size * (1 + replica_factor)
         primary_shards = Math.ceil(data_ingest_int/shard_size)
-        console.log(data_ingest_int)
-        console.log(shard_size)
-        console.log(primary_shards)
         index_shards = primary_shards * (1 + replica_factor)
         total_shards_per_cluster = (primary_shards * retention_period_int) * (1 + replica_factor);
 
