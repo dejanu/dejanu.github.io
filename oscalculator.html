@@ -199,7 +199,7 @@
         total_shards_per_cluster = (primary_shards * retention_period_int) * (1 + replica_factor);
 
         // formula: no_of_shards_per_node = no_of_shard_per_index / no_of_data_nodes
-        no_of_shards_per_node = Math.round(total_shards_per_cluster / data_nodes_int)
+        no_of_shards_per_node = Math.round(index_shards / data_nodes_int)
 
         document.getElementById("indexshards").innerHTML = "Shards " + "per index(replication factor of 1): " + index_shards;
         document.getElementById("clustershards").innerHTML = "Shards per cluster: " + total_shards_per_cluster;
