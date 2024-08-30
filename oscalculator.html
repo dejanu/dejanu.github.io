@@ -97,37 +97,39 @@
             <p><code>cluster.max_shards_per_node</code> setting limits the total number of primary and replica shards for the cluster, default is <code>1000</code></p>
             <p>Set your index shard count to be divisible by your instance count,to ensure a even distribution of shards across the data nodes.</p>
             <p><img src="src/indexvssearch.png" class="img-fluid" alt="Responsive image"></p>
-            <p>Get sorted view for shards distribution across cluster nodes, usingOpenSearch API: <code>GET _cat/shards?v=true&s=store:desc&h=index,node,store</code></p>
+            <p>Get sorted view for shards distribution across cluster nodes, using OpenSearch API: <code>GET _cat/shards?v=true&s=store:desc&h=index,node,store</code></p>
           </div>
         </div>
         </div>
         <div class="accordion-item">
         <h2 class="accordion-header" id="headingTwo">
           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-            OpenSearch cluster health
+            Shard Resource Consumption
           </button>
         </h2>
         <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
           <div class="accordion-body">
-            <p>🟢 Green: all primary shards and their replicas are allocated to nodes</p>
-            <p>🟡 Yellow: all primary shards are allocated to nodes, but some replicas aren’t</p>
-            <p>🔴 Red: at least one primary shard and its replicas are not allocated to any node</p>
-            <p>📌<strong>Unassigned shards cannot be deleted, an unassigned shard is not a corrupted shard, but a missing replica.</strong></p>
-            <p>To understand why a shard cannot be allocated to a node, use the OpenSearch API: <code>GET /_cluster/allocation/explain</code>.</p>
+            <p>Each shard is a full <a href="https://lucene.apache.org/core/8_0_0/core/org/apache/lucene/index/package-summary.html">Lucene Index</a>, and each instance of Lucene is a running process that consumes CPU and memory.</p>
+            <p>When a shard is involved in an indexing/search request, it uses a CPU to process the request.</p>
+            <p>Avoid <b>Oversharding</b>:Each shard you add to an index distributes the processing of requests for that index across an additional CPU.</p>
+            <p>The number of active shards that your domain can support depends on the number of CPUs in the cluster. </p>
+            <p>A small set of large shards uses fewer resources than many small shards.</p>
           </div>
         </div>
         </div>
         <div class="accordion-item">
           <h2 class="accordion-header" id="headingTwo">
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-              Shard Resource Consumption
+              OpenSearch cluster health
             </button>
           </h2>
           <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
             <div class="accordion-body">
-              <p>Each shard is a full <a href="https://lucene.apache.org/core/8_0_0/core/org/apache/lucene/index/package-summary.html">Lucene Index</a>, and each instance of Lucene is a running process that consumes CPU and memory.</p>
-              <p>When a shard is involved in an indexing/search request, it uses a CPU to process the request.As a best practice, use an initial scale point of 1.5 CPU per shard.</p>
-              <p>A small set of large shards uses fewer resources than many small shards.</p>
+              <p>🟢 Green: all primary shards and their replicas are allocated to nodes</p>
+              <p>🟡 Yellow: all primary shards are allocated to nodes, but some replicas aren’t</p>
+              <p>🔴 Red: at least one primary shard and its replicas are not allocated to any node</p>
+              <p>📌<strong>Unassigned shards cannot be deleted, an unassigned shard is not a corrupted shard, but a missing replica.</strong></p>
+              <p>To understand why a shard cannot be allocated to a node, use the OpenSearch API: <code>GET /_cluster/allocation/explain</code>.</p>
             </div>
           </div>
         </div>
@@ -179,7 +181,6 @@
         var data_ingest_int = parseFloat(data_ingest,10)
         var retention_period_int = parseInt(retention_period,10)
         var data_nodes_int = parseInt(data_nodes,10)
-        // formula: total_shards_per_cluster = (data_ingest * retention_period)/shard_size * (1 + replica_factor)
 
         var checkboxes = document.getElementsByName('option');
             var selectedValue = null;
@@ -191,15 +192,13 @@
         shard_size = parseInt(selectedValue,10)
 
         replica_factor = 1; //replication factor of 1
+        // formula: total_shards_per_cluster = (data_ingest * retention_period)/shard_size * (1 + replica_factor)
         primary_shards = Math.ceil(data_ingest_int/shard_size)
-        console.log(data_ingest_int)
-        console.log(shard_size)
-        console.log(primary_shards)
         index_shards = primary_shards * (1 + replica_factor)
         total_shards_per_cluster = (primary_shards * retention_period_int) * (1 + replica_factor);
 
         // formula: no_of_shards_per_node = no_of_shard_per_index / no_of_data_nodes
-        no_of_shards_per_node = Math.round(total_shards_per_cluster / data_nodes_int)
+        no_of_shards_per_node = Math.round(index_shards / data_nodes_int)
 
         document.getElementById("indexshards").innerHTML = "Shards " + "per index(replication factor of 1): " + index_shards;
         document.getElementById("clustershards").innerHTML = "Shards per cluster: " + total_shards_per_cluster;
