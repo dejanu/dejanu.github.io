@@ -23,7 +23,6 @@
 </head>
 
 <body>
-
 <div class="root">
   <header>
    <h2>Your <s>trusty</s> OpenSearch calculator</h2>
@@ -34,13 +33,13 @@
         <form method="post" onsubmit="readData(); return false;" class="forms">
 
           <label for="data_ingest">Value in <b>GB</b> for ingested data in the index (daily):</label>
-          <p><input type="text" name="data_ingest" placeholder="Enter value i.e. 50 "></p>
+          <p><input type="text" name="data_ingest" placeholder="Enter value i.e. 50 " required></p>
 
           <label for="retention_period">Value in <b>days</b> for the rentention period:</label>
-          <p><input type="text" name="retention_period" placeholder="Enter value i.e. 30"></p>
+          <p><input type="text" name="retention_period" placeholder="Enter value i.e. 30" required></p>
 
           <label for="data_nodes">Number of <b>data nodes</b>:</label>
-          <p><input type="text" name="data_nodes" placeholder="Enter value i.e. 4"></p>
+          <p><input type="text" name="data_nodes" placeholder="Enter value i.e. 4" required></p>
 
           <div class="dropdown">
             <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -111,8 +110,7 @@
           <div class="accordion-body">
             <p>Each shard is a full <a href="https://lucene.apache.org/core/8_0_0/core/org/apache/lucene/index/package-summary.html">Lucene Index</a>, and each instance of Lucene is a running process that consumes CPU and memory.</p>
             <p>When a shard is involved in an indexing/search request, it uses a CPU to process the request.</p>
-            <p>Avoid <b>Oversharding</b>:Each shard you add to an index distributes the processing of requests for that index across an additional CPU.</p>
-            <p>The number of active shards that your domain can support depends on the number of CPUs in the cluster. </p>
+            <p>Avoid <b>Oversharding</b>: Each shard you add to an index distributes the processing of requests for that index across an additional CPU. The number of active shards that your domain can support depends on the number of CPUs in the cluster.</p>
             <p>A small set of large shards uses fewer resources than many small shards.</p>
           </div>
         </div>
