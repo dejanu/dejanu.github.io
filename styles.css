@@ -3,7 +3,9 @@ body, html {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
+    scroll-behavior: smooth; /* Smooth scrolling */
+    color: #333;
   }
   
   /* Hero Section */
@@ -17,11 +19,12 @@ body, html {
     justify-content: center;
     align-items: center;
     text-align: center;
+    padding: 0 20px;
   }
   
   .hero h1 {
     font-size: 3rem;
-    margin: 0;
+    margin: 0 0 10px 0;
   }
   
   .hero p {
@@ -30,29 +33,58 @@ body, html {
   
   /* Content Section */
   .content {
-    padding: 50px;
+    padding: 60px 20px;
     text-align: center;
-    background-color: #f4f4f4;
+    background-color: #f9f9f9;
   }
   
   .content h2 {
     margin-top: 0;
+    font-size: 2rem;
+  }
+  
+  .content p {
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
   }
   
   /* Parallax Section */
   .parallax {
-    height: 500px;
+    height: 400px;
     background: url('monkeybanner.png') no-repeat center center/cover;
     background-attachment: fixed;
-    background-position: center;
-    background-size: cover;
   }
   
   /* Footer */
   footer {
-    text-align: center;
     padding: 20px;
+    text-align: center;
     background-color: #333;
     color: white;
+  }
+  
+/* Scroll Indicator */
+.scroll-indicator {
+    width: 30px;
+    height: 30px;
+    border: 2px solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+    margin: 20px auto 0;
+    animation: bounce 1.5s infinite;
+  }
+  
+  /* Bounce Animation */
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0) rotate(45deg);
+    }
+    40% {
+      transform: translateY(10px) rotate(45deg);
+    }
+    60% {
+      transform: translateY(5px) rotate(45deg);
+    }
   }
   
