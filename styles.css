@@ -53,8 +53,17 @@ body, html {
   .parallax {
     height: 400px;
     background: url('monkeybanner.png') no-repeat center center/cover;
-    background-attachment: fixed;
+    background-position: center center;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
   }
+
+/* Mobile adjustments for parallax */
+@media (max-width: 768px) {
+    .parallax {
+      background-attachment: scroll; /* Disable fixed attachment for smoother scrolling on mobile */
+      background-size: cover; /* Ensure the image covers the entire section */
+    }
   
   /* Footer */
   footer {
