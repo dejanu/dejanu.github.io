@@ -42,8 +42,8 @@ body, html {
     line-height: 1.6;
     color: white;
     a { 
-        color: white;
-        text-decoration: none;
+        color: white !important;
+        text-decoration: none !important;
     }
   }
   
