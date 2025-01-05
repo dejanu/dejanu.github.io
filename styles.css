@@ -54,7 +54,13 @@ body, html {
     background-attachment: fixed;
     background-size: 100% auto;
   }
-  
+
+/* Mobile parallax */
+  @media (max-width: 768px) { 
+    .parallax { 
+        background-attachment: scroll; 
+    } 
+}
   /* Footer */
   footer {
     padding: 20px;
