@@ -56,7 +56,7 @@ body, html {
   }
 
 /* Mobile parallax */
-  @media (max-width: 768px) { 
+  @media (max-width: 1170px) { 
     .parallax { 
         background-attachment: scroll; 
     } 
