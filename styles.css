@@ -41,10 +41,15 @@ body, html {
     margin: 0 auto;
     line-height: 1.6;
     color: white;
-    a { 
-        color: white !important;
-        text-decoration: none !important;
-    }
+  }
+
+  .content a {
+    color: white !important;
+    text-decoration: none !important;
+  }
+
+  .content a:hover {
+    color: #c4b8f1
   }
   
   /* Parallax Section */
