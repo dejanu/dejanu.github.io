@@ -22,9 +22,9 @@ body, h1, h2, p, ul, li, a, html  {
     padding: 0 20px;
   }
     
-  /* Content Section */
+  /* Content Sections */
   .content {
-    padding: 60px 20px;
+    padding: 40px 20px;
     text-align: center;
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
     url('codecamp.png') no-repeat center center/cover;
@@ -32,8 +32,8 @@ body, h1, h2, p, ul, li, a, html  {
   }
   
   .content h2 {
-    margin-top: 0;
-    font-size: 2rem;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
   }
   
   .content p {
@@ -43,11 +43,11 @@ body, h1, h2, p, ul, li, a, html  {
     color: white;
   }
 
+/* ContactMe hyperlink override */
   .content a {
     color: white !important;
     text-decoration: none !important;
   }
-
   .content a:hover {
     color: gray
   }
@@ -60,11 +60,24 @@ body, h1, h2, p, ul, li, a, html  {
     background-size: 100% auto;
   }
 
-/* Mobile parallax */
-  @media (max-width: 1170px) { 
-    .parallax { 
-        background-attachment: scroll; 
-    } 
+/* Media Queries for Larger Screens */
+  @media (max-width: 768px) {
+    .hero h1 {
+        font-size: 3rem;
+      }
+    
+      .hero p {
+        font-size: 1.2rem;
+      }
+    
+      .content h2 {
+        font-size: 2rem;
+      }
+    
+      .skill-item {
+        font-size: 1rem;
+        padding: 10px 20px;
+      }
 }
   /* Footer */
   footer {
@@ -86,8 +99,8 @@ body, h1, h2, p, ul, li, a, html  {
     animation: bounce 1.5s infinite;
   }
   
-  /* Bounce Animation */
-  @keyframes bounce {
+/* Bounce Animation */
+@keyframes bounce {
     0%, 20%, 50%, 80%, 100% {
       transform: translateY(0) rotate(45deg);
     }
@@ -101,14 +114,15 @@ body, h1, h2, p, ul, li, a, html  {
   
 /* Social Media Buttons */
 .social-buttons {
-    margin-top: 10px;
+    margin-top: 20px;
   }
   
-  .social-icon {
-    width: 30px;
-    height: 30px;
+.social-icon {
+    width: 24px;
+    height: 24px;
     margin: 0 10px;
     display: inline-block;
+    margin: 0 10px;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
