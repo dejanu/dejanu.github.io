@@ -9,7 +9,7 @@ body, html  {
   
 /* Parallax Section */
 .parallax {
-  height: 400px;
+  height: 100%;
   background: url('monkeybanner.png') no-repeat center center/cover;
   background-attachment: fixed;
   background-position: center;
@@ -21,9 +21,7 @@ body, html  {
 @media (max-width: 768px) {
   .parallax {
     background-attachment: scroll;
-    background-size: auto 100%; /* Ensure the height of the image fits without cropping */
-    background-position: center center;
-    height: auto; /* Let the height adapt based on image aspect ratio */
+    background-size: contain;
   }
 }
 
