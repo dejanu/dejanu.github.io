@@ -31,32 +31,49 @@ body, html  {
   padding: 0 20px;
 }
     
-  /* Content Sections */
-  .content {
-    height: 25vh;
-    padding: 0 20px;
-    /* spacing bleah */
-    /* margin-top: 20px; */
-    display: flex; 
-    flex-direction: column; 
-    justify-content: center; 
-    align-items: center; 
-    text-align: center;
-    background:url('codecamp.png');
-    color: white;
-  }
-  
-  .content h2 {
-    font-size: 1.5rem;
-    margin-bottom: 20px;
-  }
-  
-  .content p {
-    max-width: 600px;
-    margin: 0 auto;
-    line-height: 1.6;
-    color: white;
-  }
+/* Content Sections */
+.content {
+  height: 25vh;
+  padding: 0 20px;
+  /* spacing bleah */
+  /* margin-top: 20px; */
+  display: flex; 
+  flex-direction: column; 
+  justify-content: center; 
+  align-items: center; 
+  text-align: center;
+  position: relative;
+  background: url('article_banner.png');
+  color: white;
+}
+
+.content::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+  z-index: 1; /* Ensure the overlay is behind the text */
+}
+
+.content > * {
+  position: relative;
+  z-index: 2; /* Ensure the text is above the overlay */
+}
+
+.content h2 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.content p {
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+  color: white;
+}
 
 /* ContactMe hyperlink override */
   .content a {
@@ -69,7 +86,7 @@ body, html  {
 footer {
   padding: 20px;
   text-align: center;
-  background-color: #333;
+  background-color: black;
   color: white;
 }
   
