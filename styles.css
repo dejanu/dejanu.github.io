@@ -21,9 +21,10 @@ body, html  {
 /* Mobile media query for small */
 @media (max-width: 768px) {
   .parallax {
-    background-attachment: scroll;
+    background-attachment: fixed;
     background-size: cover; /* Change from contain to cover */
     background-repeat: no-repeat;
+    background-position: center;
   }
 }
 
