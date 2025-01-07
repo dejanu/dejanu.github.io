@@ -21,8 +21,8 @@ body, html  {
 /* Mobile media query for small */
 @media (max-width: 768px) {
   .parallax {
-    background-attachment: fixed;
-    background-size: cover; /* Change from contain to cover */
+    background-attachment: fixed; /* for parallax effect */
+    background-size: 100% auto;  /* Ensures no zoom and maintains aspect ratio */
     background-repeat: no-repeat;
     background-position: center;
   }
