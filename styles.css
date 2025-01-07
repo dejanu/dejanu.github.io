@@ -22,17 +22,30 @@ body, html  {
 @media (max-width: 768px) {
   .parallax {
     background-attachment: fixed; /* for parallax effect */
-    background-size: 100% auto;  /* Ensures no zoom and maintains aspect ratio */
+    /* background-size: 100% auto;  /* Ensures no zoom and maintains aspect ratio */
+    background-size: cover;
+    background-position: center top;
     background-repeat: no-repeat;
-    background-position: center;
+    background-color: black; /* Fallback color */
   }
+  .parallax::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+      z-index: 1;
+    }
+  
 }
 
 /* Hero Section */
 .hero {
   height: 100vh;
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),  
-               url('monkeybanner.png') no-repeat center center/cover; 
+               url('test.png') no-repeat center center/cover; 
   color: white;
   display: flex;
   flex-direction: column;
