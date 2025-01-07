@@ -21,8 +21,9 @@ body, html  {
 @media (max-width: 768px) {
   .parallax {
     background-attachment: scroll;
-    background-size: contain; /* Or adjust this as needed */
-    height: 300px; /* Optional: Adjust height for smaller screens */
+    background-size: auto 100%; /* Ensure the height of the image fits without cropping */
+    background-position: center center;
+    height: auto; /* Let the height adapt based on image aspect ratio */
   }
 }
 
