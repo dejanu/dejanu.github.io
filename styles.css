@@ -17,6 +17,15 @@ body, html  {
   background-size: cover;
 }
 
+/* Mobile media query for small */
+@media (max-width: 768px) {
+  .parallax {
+    background-attachment: scroll;
+    background-size: contain; /* Or adjust this as needed */
+    height: 300px; /* Optional: Adjust height for smaller screens */
+  }
+}
+
 /* Hero Section */
 .hero {
   height: 100vh;
@@ -35,8 +44,6 @@ body, html  {
 .content {
   height: 25vh;
   padding: 0 20px;
-  /* spacing bleah */
-  /* margin-top: 20px; */
   display: flex; 
   flex-direction: column; 
   justify-content: center; 
