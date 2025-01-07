@@ -22,7 +22,8 @@ body, html  {
 @media (max-width: 768px) {
   .parallax {
     background-attachment: scroll;
-    background-size: contain;
+    background-size: cover; /* Change from contain to cover */
+    background-repeat: no-repeat;
   }
 }
 
