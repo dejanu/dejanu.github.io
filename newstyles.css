@@ -1,0 +1,99 @@
+/* General styles */
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: 'Chivo', sans-serif;
+    scroll-behavior: smooth; /* Smooth scrolling */
+}
+
+/* Parallax section */
+.parallax {
+    background-image: url('index.gif');
+    height: 500px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* Content sections with different backgrounds */
+.content {
+    height: 500px;
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+    text-align: center;
+    padding: 20px;
+    color: white;
+}
+
+.content1 {
+    background: url('monkeybanner.png') no-repeat center center/cover;
+}
+
+.content2 {
+    background: url('codecamp.png') no-repeat center center/cover;
+}
+
+.content3 {
+    background: url('codecamp_fb.jpeg') no-repeat center center/cover;
+}
+
+.content h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.content p {
+    font-size: 1.2rem;
+    max-width: 600px;
+}
+
+/* Footer */
+footer {
+    padding: 20px;
+    text-align: center;
+    background-color: rgb(43, 41, 41);
+    color: white;
+  }
+  
+  /* ContactMe hyperlink override */
+  footer p,
+  footer a {
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+    color: white;
+  }
+  
+  footer a {
+      text-decoration: none !important;
+    }
+    
+    .social-buttons {
+        margin-top: 20px;
+      }
+      
+    .social-icon {
+        width: 24px;
+        height: 24px;
+        margin: 0 10px;
+        display: inline-block;
+        margin: 0 10px;
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+      
+      .twitter {
+        background-image: url('https://cdn-icons-png.flaticon.com/512/733/733579.png');
+      }
+      
+      .youtube {
+        background-image: url('https://cdn-icons-png.flaticon.com/512/733/733590.png');
+      }
+      
+      .linkedin {
+        background-image: url('https://cdn-icons-png.flaticon.com/512/733/733561.png');
+      }
