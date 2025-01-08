@@ -43,7 +43,7 @@ body, html {
       transform: translateY(5px) rotate(45deg);
     }
   }
-  
+
 /* Parallax section */
 .parallax {
     background-image: url('index.gif');
@@ -144,7 +144,7 @@ footer {
 
     .content {
         height: auto; /* Adjust height for mobile */
-        padding: 10px; /* Adjust padding for mobile */
+        padding: 5px; /* Adjust padding for mobile */
     }
 
     .content1, .content2, .content3 {
