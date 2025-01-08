@@ -56,7 +56,7 @@ body, html {
 
 /* Content sections with different backgrounds */
 .content {
-    height: 500px;
+    height: 800px;
     display: flex; 
     flex-direction: column; 
     justify-content: center; 
@@ -67,7 +67,7 @@ body, html {
 }
 
 .content1 {
-    background: url('kcd.png') no-repeat center center/cover;
+    background: url('kcd.jpeg') no-repeat center center/cover;
 }
 
 .content2 {
@@ -151,11 +151,11 @@ footer {
         height: auto; /* Adjust height for mobile */
         padding: 5px; /* Adjust padding for mobile */
     }
-
-    .content1, .content2, .content3 {
-        background-size: contain; /* Adjust background size for mobile */
-        background-position: center top; /* Adjust background position for mobile */
-    }
+ /* Adjust background size and background position for mobile */
+    /* .content1, .content2, .content3 {
+        background-size: contain; 
+        background-position: center top; 
+    } */
 
     .content h1 {
         font-size: 2rem; /* Adjust font size for mobile */
