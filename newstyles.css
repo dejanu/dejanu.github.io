@@ -67,16 +67,21 @@ body, html {
 }
 
 .content1 {
-    background: url('monkeybanner.png') no-repeat center center/cover;
+    background: url('kcd.png') no-repeat center center/cover;
 }
 
 .content2 {
-    background: url('codecamp.png') no-repeat center center/cover;
+    background: url('codecamp2.png') no-repeat center center/cover;
 }
 
 .content3 {
-    background: url('codecamp_fb.jpeg') no-repeat center center/cover;
+  background: url('gotech.png') no-repeat center center/cover;
 }
+
+.content4 {
+  background: url('wrkshp.png') no-repeat center center/cover;
+}
+
 
 .content h1 {
     font-size: 2.5rem;
