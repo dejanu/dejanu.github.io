@@ -97,3 +97,28 @@ footer {
       .linkedin {
         background-image: url('https://cdn-icons-png.flaticon.com/512/733/733561.png');
       }
+
+/* Mobile styles */
+@media screen and (max-width: 600px) {
+    .parallax {
+        background-attachment: scroll; /* Disable fixed background on mobile */
+    }
+
+    .content {
+        height: auto; /* Adjust height for mobile */
+        padding: 10px; /* Adjust padding for mobile */
+    }
+
+    .content1, .content2, .content3 {
+        background-size: contain; /* Adjust background size for mobile */
+        background-position: center top; /* Adjust background position for mobile */
+    }
+
+    .content h1 {
+        font-size: 2rem; /* Adjust font size for mobile */
+    }
+
+    .content p {
+        font-size: 1rem; /* Adjust font size for mobile */
+    }
+}
