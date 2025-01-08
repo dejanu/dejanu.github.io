@@ -46,7 +46,7 @@ body, html  {
     
 /* Content Sections */
 .content {
-  height: 60vh;
+  height: 95vh;
   padding: 0 20px;
   display: flex; 
   flex-direction: column; 
@@ -79,18 +79,6 @@ body, html  {
   margin-bottom: 20px;
 }
 
-.content p {
-  max-width: 600px;
-  margin: 0 auto;
-  line-height: 1.6;
-  color: white;
-}
-
-/* ContactMe hyperlink override */
-  .content a {
-    color: white !important;
-    text-decoration: none !important;
-  }
 
   
 /* Footer */
@@ -100,7 +88,19 @@ footer {
   background-color: black;
   color: white;
 }
-  
+
+footer p {
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+  color: white;
+}
+
+/* ContactMe hyperlink override */
+footer a {
+    color: white !important;
+    text-decoration: none !important;
+  }
   
 /* Scroll Indicator */
 .scroll-indicator {
