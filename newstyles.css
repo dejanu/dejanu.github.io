@@ -56,14 +56,26 @@ body, html {
 
 /* Content sections with different backgrounds */
 .content {
-    height: 800px;
-    display: flex; 
-    flex-direction: column; 
-    justify-content: center; 
-    align-items: center; 
-    text-align: center;
-    padding: 20px;
-    color: white;
+  height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;  /* Push content to the bottom */
+  align-items: center;        /* Center horizontally */
+  text-align: center;
+  padding-bottom: 40px;       /* Add space at the bottom */
+  color: white;
+  gap: 10px;
+}
+
+.content h1 {
+  font-size: 2.5rem;
+  margin: 0;
+}
+
+.content p {
+  font-size: 1.2rem;
+  max-width: 600px;
+  margin: 0;
 }
 
 .content1 {
@@ -82,16 +94,6 @@ body, html {
   background: url('wrkshp.png') no-repeat center center/cover;
 }
 
-
-.content h1 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-}
-
-.content p {
-    font-size: 1.2rem;
-    max-width: 600px;
-}
 
 /* Footer */
 footer {
