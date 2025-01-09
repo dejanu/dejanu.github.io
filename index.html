@@ -52,6 +52,26 @@
       margin-bottom: 40px;
     }
 
+    .scrolling-text-container {
+      overflow: hidden;
+      white-space: nowrap;
+      width: 100%;
+    }
+
+    .scrolling-text {
+      display: inline-block;
+      animation: scroll 10s linear infinite;
+    }
+
+    @keyframes scroll {
+      0% {
+        transform: translateX(100%);
+      }
+      100% {
+        transform: translateX(-100%);
+      }
+    }
+    
 /* Scroll Indicator */
 .scroll-indicator {
     width: 30px;
@@ -191,9 +211,11 @@ footer a {
     <div>
       <h1>dejanualex</h1>
       <p>💻 SRE|DevOps|PlatformEng</p>
-      <div class="scroll-indicator"> </div>
-      <br>
+      <p>🛠️ Tech-Stack</p>
+      <p class="scrolling-text">Kubernetes Python Prometheus Grafana Bash</p>
       <p>Scroll for more</p>
+      <br>
+      <div class="scroll-indicator"></div>
     </div>
   </div>
   <div class="section">
