@@ -85,21 +85,45 @@
       position: absolute;
       bottom: 10%;
       left: 5%;
-      padding: 20px;
-      background: rgba(0, 0, 0, 0.5);
+      padding: 15px;
+      background: rgba(0, 0, 0, 0.6);
       color: #fff;
-      max-width: 40%;
+      max-width: 90%;
       border-radius: 8px;
     }
 
     .content-box h1 {
       margin-bottom: 10px;
-      font-size: 2rem;
+      font-size: 1.5rem;
     }
 
     .content-box p {
-      font-size: 1rem;
-      line-height: 1.5;
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+
+    /* Responsive design */
+    @media (min-width: 768px) {
+      .content-box {
+        max-width: 40%;
+        padding: 20px;
+      }
+
+      .content-box h1 {
+        font-size: 2rem;
+      }
+
+      .content-box p {
+        font-size: 1rem;
+      }
+
+      .hero h1 {
+        font-size: 4rem;
+      }
+
+      .hero p {
+        font-size: 1.5rem;
+      }
     }
 
     /* Scroll snap for smooth page snap */
@@ -111,7 +135,7 @@
       scroll-snap-align: start;
     }
 
-    /* Footer */
+/* Footer */
 footer {
   padding: 20px;
   text-align: center;
@@ -166,7 +190,7 @@ footer a {
   <div class="section hero">
     <div>
       <h1>dejanualex</h1>
-      <p>💻 #SRE #DevOps #PlatformEng</p>
+      <p>💻 SRE|DevOps|PlatformEng</p>
       <div class="scroll-indicator"> </div>
       <br>
       <p>Scroll for more</p>
