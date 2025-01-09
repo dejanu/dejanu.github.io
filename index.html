@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Scroll Transition Page</title>
+  <title>AboutMe dejanualex</title>
   <style>
     * {
       margin: 0;
@@ -35,10 +35,51 @@
       transform: scale(1) translateY(0);
     }
 
-    .section:nth-child(1) { background-image: url('monkeybanner.png'); }
-    .section:nth-child(2) { background-image: url('kcd.jpeg'); }
-    .section:nth-child(3) { background-image: url('codecamp2.png'); }
-    .section:nth-child(4) { background-image: url('wrkshp.png'); }
+    .hero {
+      background-color: black;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .hero h1 {
+      font-size: 4rem;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 1.5rem;
+      margin-bottom: 40px;
+    }
+
+/* Scroll Indicator */
+.scroll-indicator {
+    width: 30px;
+    height: 30px;
+    border: 2px solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+    margin: 20px auto 0;
+    animation: bounce 1.5s infinite;
+  }
+  
+/* Bounce Animation */
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0) rotate(45deg);
+    }
+    40% {
+      transform: translateY(10px) rotate(45deg);
+    }
+    60% {
+      transform: translateY(5px) rotate(45deg);
+    }
+  }
+
+    .section:nth-child(2) { background-image: url('monkeybanner.png'); }
+    .section:nth-child(3) { background-image: url('kcd.jpeg'); }
+    .section:nth-child(4) { background-image: url('codecamp2.png'); }
+    .section:nth-child(5) { background-image: url('wrkshp.png'); }
 
     .content-box {
       position: absolute;
@@ -53,11 +94,11 @@
 
     .content-box h1 {
       margin-bottom: 10px;
-      font-size: 4rem;
+      font-size: 2rem;
     }
 
     .content-box p {
-      font-size: 2rem;
+      font-size: 1rem;
       line-height: 1.5;
     }
 
@@ -122,28 +163,37 @@ footer a {
 </head>
 <body>
 
-  <div class="section">
-    <div class="content-box">
-      <h1>DevCon</h1>
-      <p>Pick Your Poison: SRE, DevOps, or Platform Engineering</p>
+  <div class="section hero">
+    <div>
+      <h1>dejanualex</h1>
+      <p>💻 #SRE #DevOps #PlatformEng</p>
+      <div class="scroll-indicator"> </div>
+      <br>
+      <p>Scroll for more</p>
     </div>
   </div>
   <div class="section">
     <div class="content-box">
-      <h1>KCD</h1>
-      <p>2024: I Don't Know K8S and at This Point, I'm Too Afraid To Ask</p>
+      <h1>Welcome to the Jungle</h1>
+      <p>Explore the wild and vibrant world of nature.</p>
     </div>
   </div>
   <div class="section">
     <div class="content-box">
-      <h1>CodeCamp</h1>
-      <p>Cloud Native Application Bundles…another specification? Or rather a new level of packaging?</p>
+      <h1>Knowledge Conference</h1>
+      <p>Join us for insightful talks and networking opportunities.</p>
     </div>
   </div>
   <div class="section">
     <div class="content-box">
-      <h1>Masterclass</h1>
-      <p>Container to Pod: From Zero to Hero</p>
+      <h1>Code Camp</h1>
+      <p>Enhance your coding skills with hands-on workshops and tutorials.</p>
+    </div>
+  </div>
+  <div class="section">
+    <div class="content-box">
+      <h1>Workshop Zone</h1>
+      <p>Participate in interactive sessions led by industry experts.</p>
     </div>
   </div>
 
@@ -154,7 +204,7 @@ footer a {
       <a href="https://www.linkedin.com/in/dejanualex/" target="_blank" class="social-icon linkedin" aria-label="LinkedIn"></a>
       <a href="https://x.com/dejanualex" target="_blank" class="social-icon twitter" aria-label="Twitter"></a>
     </div>
-  </footer>
+  </footer> 
 
   <script>
     const sections = document.querySelectorAll('.section');
