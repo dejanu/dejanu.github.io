@@ -69,6 +69,55 @@
     .section {
       scroll-snap-align: start;
     }
+
+    /* Footer */
+footer {
+  padding: 20px;
+  text-align: center;
+  background-color: black;
+  color: white;
+}
+
+/* ContactMe hyperlink override */
+footer p {
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+  color: white;
+}
+
+footer a {
+    color: white !important;
+    text-decoration: none !important;
+  }
+
+  /* Social Media Buttons */
+.social-buttons {
+    margin-top: 20px;
+  }
+  
+.social-icon {
+    width: 24px;
+    height: 24px;
+    margin: 0 10px;
+    display: inline-block;
+    margin: 0 10px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  
+  .twitter {
+    background-image: url('https://cdn-icons-png.flaticon.com/512/5969/5969020.png');
+  }
+  
+  .youtube {
+    background-image: url('https://cdn-icons-png.flaticon.com/512/733/733590.png');
+  }
+  
+  .linkedin {
+    background-image: url('https://cdn-icons-png.flaticon.com/512/733/733561.png');
+  }
   </style>
 </head>
 <body>
@@ -97,6 +146,15 @@
       <p>Container to Pod: From Zero to Hero</p>
     </div>
   </div>
+
+  <footer>
+    <h2><a href="mailto:dejanualexandru@gmail.com">📨 ContactMe</a></h2>
+    <div class="social-buttons">
+      <a href="https://www.youtube.com/@dejanualex" target="_blank" class="social-icon youtube" aria-label="YouTube"></a>
+      <a href="https://www.linkedin.com/in/dejanualex/" target="_blank" class="social-icon linkedin" aria-label="LinkedIn"></a>
+      <a href="https://x.com/dejanualex" target="_blank" class="social-icon twitter" aria-label="Twitter"></a>
+    </div>
+  </footer>
 
   <script>
     const sections = document.querySelectorAll('.section');
