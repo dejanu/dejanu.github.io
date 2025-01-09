@@ -52,14 +52,15 @@
       margin-bottom: 40px;
     }
 
-    /* Scrolling text container */
     .scrolling-text-container {
       overflow: hidden;
       white-space: nowrap;
-      width: 100%;
       width: 80%; /* Set a fixed width */
       max-width: 600px; /* Optional: set a maximum width */
       margin: 0 auto; /* Center the container */
+      border: 2px solid black; /* Optional: add a border to the container */
+      padding: 10px; /* Optional: add padding to the container */
+      box-sizing: border-box; /* Ensure padding and border are included in the width */
     }
 
     .scrolling-text {
@@ -216,8 +217,11 @@ footer a {
       <h1>dejanualex</h1>
       <p>💻 SRE | DevOps | PlatformEng</p>
       <p>🛠️ Tech-Stack</p>
-      <p class="scrolling-text">Kubernetes Python Prometheus Grafana Bash</p>
-      <!-- <p>Scroll for more</p> -->
+      <hr>
+      <div class="scrolling-text-container">
+        <p class="scrolling-text">Kubernetes Docker Prometheus Grafana OpenSearch Terraform Python</p>
+        <p class="scrolling-text">Kubernetes Docker Prometheus Grafana</p>
+      </div>
       <br>
       <div class="scroll-indicator"></div>
     </div>
