@@ -20,6 +20,22 @@
       font-weight: normal;
       font-style: normal;
     }
+
+  @font-face {
+    font-family: 'Metropolis-Bold';
+    src: url('fonts/Metropolis-Bold.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Metropolis-Medium';
+    src: url('fonts/Metropolis-Medium.woff') format('woff'),
+         url('fonts/Metropolis-Medium.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+  }
+
   * {
       margin: 0;
       padding: 0;
@@ -30,7 +46,7 @@
       height: 100%;
       overflow-x: hidden;
       scroll-behavior: smooth;
-      font-family: 'HudsonNY', Arial, sans-serif;
+      font-family: 'Metropolis-Bold', Arial, sans-serif;
     }
 
     .section {
@@ -56,6 +72,7 @@
       color: white;
       text-align: center;
       padding: 20px;
+      font-family: 'Metropolis-SemiBold', Arial, sans-serif;
     }
 
     .hero h1 {
